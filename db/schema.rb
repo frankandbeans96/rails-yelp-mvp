@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_101238) do
+ActiveRecord::Schema.define(version: 2020_05_13_111100) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(version: 2020_05_13_101238) do
   create_table "reviews", force: :cascade do |t|
     t.text "content"
     t.integer "rating"
-    t.integer "restaurants_id", null: false
+    t.integer "restaurant_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["restaurants_id"], name: "index_reviews_on_restaurants_id"
+    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
   end
 
-  add_foreign_key "reviews", "restaurants", column: "restaurants_id"
+  add_foreign_key "reviews", "restaurants"
 end
